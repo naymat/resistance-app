@@ -1,0 +1,23 @@
+{
+  "name": "resistance-app",
+  "version": "1.0.0",
+  "description": "Resistance game desktop application by Naymat Khan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naymat/resistance-app.git"
+  },
+  "author": "Naymat Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naymat/resistance-app/issues"
+  },
+  "homepage": "https://github.com/naymat/resistance-app#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0"
+  }
+}
