@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Test Website</title>
+    </head>
+    <body>
+        {{{body}}}
+    </body>
+    <script>
+        var sock = new WebSocket("ws://localhost:8081");
+        sock.onopen = function(e){
+            alert("Connection successful");
+        }
+       function sendMessage(message){
+           sock.send(message);
+       }
+    </script>
+</html>
