@@ -1,5 +1,10 @@
-<form action="http://localhost:8080">
-    <input id="inputName" type="text" placeholder="Enter your name">
-    <input type="submit" value="Submit">
-</form>
+<input id="inputName" type="text" placeholder="Enter your name">
+<input type="button" value="Submit" onclick="submitButton()">
 
+<script>
+    function submitButton(){
+        const name = document.getElementById('inputName').value;
+        sendMessage(name);
+        console.log("message sent: " + name);
+    }
+</script>

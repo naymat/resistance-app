@@ -5,14 +5,23 @@
     </head>
     <body>
         {{{body}}}
+        <p id="messages"></p>
     </body>
     <script>
         var sock = new WebSocket("ws://localhost:8081");
         sock.onopen = function(e){
-            alert("Connection successful");
+            //alert("Connection successful");
         }
        function sendMessage(message){
            sock.send(message);
        }
+
+       sock.onmessage = e =>{
+           console.log(e);
+           const messageViewer = document.getElementById("messages");
+           messageViewer.innerText += e.data + "\n";
+       }
+       
+       
     </script>
 </html>
