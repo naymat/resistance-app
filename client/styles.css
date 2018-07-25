@@ -1,0 +1,39 @@
+.container{
+    display: flex;
+    height: 100%;
+}
+.userinput-panel{
+    background-color: #e8f1f2;
+    flex: 6;
+}
+.sidebar {
+    display: none;
+    flex: 1;
+    display: grid;
+    grid-template-rows: 15% 15% auto;
+    flex-direction: column;
+    background-color: #13293d;
+}
+.sidebar-button{
+    font-size: 14 px;
+    padding: 10;
+
+    /* font-family: 'ABeeZee', sans-serif; */
+    /* font-family: 'Monda', sans-serif; */
+
+    /* font-family: 'Vidaloka', serif;  */
+
+    font-family: 'Cabin', sans-serif;
+    /* font-family: 'Russo One', sans-serif; */
+    /* font-weight: bold; */
+    background-color: #006494;
+    color: #e8f1f2;
+    
+    font-weight: bold;
+
+}
+
+h2{
+    padding-left: 20px;
+    color:#13293d;
+}
