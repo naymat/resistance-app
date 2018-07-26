@@ -6,7 +6,7 @@ class Game{
 
     /**
      * 
-     * @param {Player} player - player to be registered to the game
+     * @param {Player} player - add single player to be registered to the game
      */
     addPlayer(player){
         this.playerList.push(player);
@@ -17,9 +17,6 @@ class Game{
     getPlayers(){
         return this.playerList;
     }
-    /**
-     * 
-     */
 }
 
 class Player{
@@ -40,7 +37,8 @@ class Player{
         this.type = 'Resistance';
     }
 }
-const resist  = new Game();
+// const resist  = new Game();
 
-var p1 = new Player(1,'Naymat');
-console.log(p1.getName());
+// var p1 = new Player(1,'Naymat');
+// console.log(p1.getName());
+module.exports = Player;
