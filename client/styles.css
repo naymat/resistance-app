@@ -1,13 +1,16 @@
 .container{
-    display: flex;
+    display: grid;
+    grid-template-rows: 9% auto;
     height: 100%;
 }
 .userinput-panel{
     background-color: #e8f1f2;
     flex: 6;
 }
+.main{
+    display: flex;
+}
 .sidebar {
-    display: none;
     flex: 1;
     display: grid;
     grid-template-rows: 15% 15% auto;
@@ -36,4 +39,25 @@
 h2{
     padding-left: 20px;
     color:#13293d;
+}
+
+/* added */
+#title{
+    color: firebrick;
+    font-size: 24px;
+    padding-left: 30px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bolder;
+    padding-bottom: 10px;
+    margin-left: 10 px;
+}
+.header{
+    background-color: white;
+    /* display: grid;
+    grid-template-columns: 7% 5% auto; */
+}
+#fist{
+    padding-left: 10px;
+    float: left;
+    margin-right: 10px;
 }
