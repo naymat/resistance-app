@@ -25,7 +25,7 @@ class Player{
         this.name = name;
     }
     getId(){
-        return id;
+        return this.id;
     }
     getName(){
         return this.name;
@@ -41,4 +41,4 @@ class Player{
 
 // var p1 = new Player(1,'Naymat');
 // console.log(p1.getName());
-module.exports = Player;
+module.exports = {Player, Game};
