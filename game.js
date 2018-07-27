@@ -3,9 +3,7 @@ class Game{
         this.playerList = [];
         this.roundNumber = 0;
     }
-
     /**
-     * 
      * @param {Player} player - add single player to be registered to the game
      */
     addPlayer(player){
@@ -16,6 +14,34 @@ class Game{
      */
     getPlayers(){
         return this.playerList;
+    }
+    /**
+     * @param {Player[]} playerArray - The players to be added to the game
+     */
+    addMultiplePlayers(playerArray){
+        playerArray.map(player =>{
+            this.addPlayer(player);
+        })
+    }
+    /**
+     * Returns true if game can start with the current amount of players
+     * Otherwise return false 
+     */
+    canStartGame(){
+        if (this.playerList.length > 5 && this.playerList.length <= 10){
+            return true;
+        } 
+        return false; 
+    }
+    /**
+     * Assign roles to current players in PlayerList array
+     */
+    assignRoles(){
+        if(this.canStartGame()){
+            //Assign players they're roles randomly
+            
+        }
+
     }
 }
 
@@ -31,10 +57,13 @@ class Player{
         return this.name;
     }
     assignAsSpy(){
-        this.type = 'Spy';
+        this.role = 'Spy';
     }
     assignAsResistanceMember(){
-        this.type = 'Resistance';
+        this.role = 'Resistance';
+    }
+    getRole(){
+        return this.role;
     }
 }
 // const resist  = new Game();
