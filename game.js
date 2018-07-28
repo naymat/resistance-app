@@ -28,7 +28,7 @@ class Game{
      * Otherwise return false 
      */
     canStartGame(){
-        if (this.playerList.length > 5 && this.playerList.length <= 10){
+        if (this.playerList.length >= 5 && this.playerList.length <= 10){
             return true;
         } 
         return false; 
@@ -39,9 +39,60 @@ class Game{
     assignRoles(){
         if(this.canStartGame()){
             //Assign players they're roles randomly
+            const numberOfSpiesNeeded = this.spyTeamSize()
+            const numberOfResistNeeded = this.resistanceTeamSize();
+
+            let currentSpies = 0;
+            let currentResist = 0;
+
+            this.playerList.map(player =>{
+                //if there's enough resistance members, then the rest of the players are spies
+                if(currentSpies < numberOfSpiesNeeded && currentResist == numberOfResistNeeded){
+                    player.assignAsSpy();
+                    currentSpies += 1;
+                }
+                //if there's enough spies, then the rest of the players are resistance members
+                else if(currentResist < numberOfResistNeeded && currentSpies == numberOfSpiesNeeded){
+                    player.assignAsResistanceMember();
+                    currentResist +=1;
+                }
+                //Otherwise we randomly select resistance members and spies
+                else{
+                    var rand  = Math.floor((Math.random() * 2) + 1);
+
+                    if(rand == 1){
+                        player.assignAsResistanceMember();
+                        currentResist += 1;
+                    }
+                    else{
+                        player.assignAsSpy();
+                        currentSpies += 1;
+                    }
+                }
+                
+            });
             
         }
 
+    }
+
+    /**
+     * 
+     */
+    spyTeamSize(){
+        const numberOfPlayers = this.playerList.length;
+        if(numberOfPlayers == 5 || numberOfPlayers == 6){
+            return 2;
+        }
+        if(numberOfPlayers == 7 || numberOfPlayers == 8 || numberOfPlayers == 9){
+            return 3;
+        }
+        if(numberOfPlayers == 10){
+            return 4;
+        }
+    }
+    resistanceTeamSize(){
+        return this.playerList.length - this.spyTeamSize();
     }
 }
 

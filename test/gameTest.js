@@ -29,7 +29,7 @@ describe('Game', function (){
 
     })
 
-    describe('Test role assignment for different number of players', () =>{
+    describe.only('Test if game can start and role assignment for multiple players', () =>{
         let players,numberOfSpies,numberOfResistanceMembers = null;
 
         var checkRoles = function(player){
@@ -55,6 +55,13 @@ describe('Game', function (){
             numberOfSpies = 0;
             numberOfResistanceMembers = 0;           
         })
+        it('canStartGame() should return false because there are not enough players(<5)',()=>{
+            assert.isFalse(game.canStartGame());
+        });
+        it('canStartGame() should return true because there are enough players(5>)',()=>{
+            game.addMultiplePlayers(players);
+            assert.isTrue(game.canStartGame());
+        });
         it('should test addMultiplePlayers() method by adding an array of 5 players to the current game',()=>{
             game.addMultiplePlayers(players);
             assert.equal(game.getPlayers().length, 5);
@@ -76,7 +83,7 @@ describe('Game', function (){
             game.getPlayers().map(checkRoles);
 
             assert.equal(numberOfSpies,2);
-            assert.equal(numberOfResistanceMembers,3);
+            assert.equal(numberOfResistanceMembers,4);
         });
         it('7 player role assignment test - should be 3 spies and 4 resistance members', function(){
             players.push(new Player(6,"Beanie"));
