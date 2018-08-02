@@ -1,14 +1,11 @@
 const assert = require('chai').assert;
 const {Player, Game} = require("../game");
 
-
-
-
 describe('Game', function (){
-    var game;
+    let game;
 
     describe('Player class functionality testing', function(){
-        var someone;
+        let someone;
         beforeEach(function(){
             someone = new Player(1, "Naymat");
             game = new Game();
@@ -29,10 +26,10 @@ describe('Game', function (){
 
     })
 
-    describe.only('Test if game can start and role assignment for multiple players', () =>{
+    describe('Test if game can start and role assignment for multiple players', () =>{
         let players,numberOfSpies,numberOfResistanceMembers = null;
 
-        var checkRoles = function(player){
+        let checkRoles = function(player){
             if(player.getRole() === 'Spy'){
                 numberOfSpies += 1;
             }
@@ -117,7 +114,7 @@ describe('Game', function (){
             game.addMultiplePlayers(players);
             game.assignRoles();
             game.getPlayers().map(checkRoles);
-
+        
             assert.equal(numberOfSpies,3);
             assert.equal(numberOfResistanceMembers,6);
         });
@@ -136,6 +133,49 @@ describe('Game', function (){
             assert.equal(numberOfResistanceMembers,6);
         });
 
+
+    })
+    describe.only('Captain Assignment testing', function(){
+        
+        beforeEach(function(){
+            game = new Game();
+
+            players = [];
+
+            players.push(new Player(1,"Naymat"));
+            players.push(new Player(2,"Bill"));
+            players.push(new Player(3,"Rob"));
+            players.push(new Player(4,"Bert"));
+            players.push(new Player(5,"Ernie"));
+
+            game.assignRoles();
+        })
+
+        it('Should assign the selected player as the captain', function(){
+            player = game.getPlayers()[0];
+            game.assignCaptain(player);
+
+            assert.equal(game.getCaptain(), player);
+        })
+
+        it('Should assign the next player in playerList to be captain', function(){
+            player = game.getPlayers()[0];
+            game.assignCaptain(player);
+
+            nextPlayer = game.getPlayers()[1];
+            game.nextCaptain();
+
+            console.log(nextPlayer);
+            console.log(game.getCaptain());
+            assert.equal(game.getCaptain(), nextPlayer);
+        })
+
+        it('Should randomly assign a captain', function(){
+            //since no expected value for randomness, we'll just test the method and print out whoever is the captain
+
+            captain = game.randomCaptain();
+            console.log(captain);
+        })
 
     })
 })

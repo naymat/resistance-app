@@ -2,6 +2,7 @@ class Game{
     constructor(){
         this.playerList = [];
         this.roundNumber = 0;
+        this.captain = null;
     }
     /**
      * @param {Player} player - add single player to be registered to the game
@@ -74,6 +75,40 @@ class Game{
             
         }
 
+    }
+
+    getCaptain(){
+        return this.captain;
+    }
+    /**
+     * Assigns the player passed to the function as the captain
+     * @param {Player} player - The player to be assigned captain
+     */
+    assignCaptain(player){
+        this.captain = player;
+    }
+
+    /**
+     * Assigns the player next to the current captain in the list to be the new captain
+     * If the current captain is the last element in the list then new captain will be the first element in the list
+     */
+    nextCaptain(){
+        currentCaptain = this.getCaptain();
+        index = this.playerList.findIndex((player) =>{
+            if(currentCaptain === player){
+                return player;
+            }
+        });
+
+        if(index === this.playerList.length - 1){
+            return this.playerList()[0];
+        }
+        else if(index ){
+            return this.playerList()[index + 1];
+        }
+        else{
+            return Error;
+        }
     }
 
     /**
