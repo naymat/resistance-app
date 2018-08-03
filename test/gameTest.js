@@ -148,13 +148,14 @@ describe('Game', function (){
             players.push(new Player(4,"Bert"));
             players.push(new Player(5,"Ernie"));
 
+            game.addMultiplePlayers(players);
             game.assignRoles();
         })
-
         it('Should assign the selected player as the captain', function(){
             player = game.getPlayers()[0];
             game.assignCaptain(player);
 
+            assert.typeOf(game.getCaptain(),'Object');
             assert.equal(game.getCaptain(), player);
         })
 
@@ -165,16 +166,25 @@ describe('Game', function (){
             nextPlayer = game.getPlayers()[1];
             game.nextCaptain();
 
-            console.log(nextPlayer);
-            console.log(game.getCaptain());
             assert.equal(game.getCaptain(), nextPlayer);
+        })
+
+        it('Should assign the next player in playerList to be captain(edge case)', function(){
+            player = game.getPlayers()[4];
+            game.assignCaptain(player);
+
+            nextPlayer = game.getPlayers()[0];
+            game.nextCaptain();
+
+            assert.equal(game.getCaptain(),nextPlayer);
         })
 
         it('Should randomly assign a captain', function(){
             //since no expected value for randomness, we'll just test the method and print out whoever is the captain
+            //check if it changes between tests
 
-            captain = game.randomCaptain();
-            console.log(captain);
+            game.assignRandomCaptain();
+            console.log(game.getCaptain());
         })
 
     })

@@ -88,23 +88,28 @@ class Game{
         this.captain = player;
     }
 
+    assignRandomCaptain(){
+        const rand  = Math.floor((Math.random() * (this.playerList.length - 1)) + 0);
+
+        this.assignCaptain(this.playerList[rand]);
+    }
+
     /**
      * Assigns the player next to the current captain in the list to be the new captain
      * If the current captain is the last element in the list then new captain will be the first element in the list
      */
     nextCaptain(){
-        currentCaptain = this.getCaptain();
-        index = this.playerList.findIndex((player) =>{
+        let currentCaptain = this.getCaptain();
+        let index = this.playerList.findIndex((player) =>{
             if(currentCaptain === player){
                 return player;
             }
         });
-
         if(index === this.playerList.length - 1){
-            return this.playerList()[0];
+            this.assignCaptain(this.playerList[0]);
         }
-        else if(index ){
-            return this.playerList()[index + 1];
+        else if(index < this.playerList.length){
+            this.assignCaptain(this.playerList[index + 1]);
         }
         else{
             return Error;
