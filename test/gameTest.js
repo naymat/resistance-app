@@ -1,31 +1,8 @@
 const assert = require('chai').assert;
-const {Player, Game} = require("../game");
+const {Player, Game} = require("../game/Game");
 
 describe('Game', function (){
     let game;
-
-    describe('Player class functionality testing', function(){
-        let someone;
-        beforeEach(function(){
-            someone = new Player(1, "Naymat");
-            game = new Game();
-        })
-
-        it('Check if player is created with correct properties - name', function(){
-            assert.equal(someone.getName(),"Naymat");
-        })
-    
-        it('Check if player is created with correct properties - id', function(){
-            assert.equal(someone.getId(), 1);
-        })
-    
-        it('should add Player object to game', function(){
-            game.addPlayer(someone);
-            assert.isAbove(game.getPlayers().length,0);
-        })
-
-    })
-
     describe('Test if game can start and role assignment for multiple players', () =>{
         let players,numberOfSpies,numberOfResistanceMembers = null;
 
@@ -74,7 +51,6 @@ describe('Game', function (){
         });
         it('6 player role assignment test - should be 2 spies and 4 resistance members', function(){
             players.push(new Player(6,"Beanie"));
-
             game.addMultiplePlayers(players);
             game.assignRoles();
             game.getPlayers().map(checkRoles);
@@ -135,7 +111,7 @@ describe('Game', function (){
 
 
     })
-    describe.only('Captain Assignment testing', function(){
+    describe('Captain Assignment testing', function(){
         
         beforeEach(function(){
             game = new Game();

@@ -1,3 +1,5 @@
+const Player = require("../game/Player");
+
 class Game{
     constructor(){
         this.playerList = [];
@@ -136,27 +138,7 @@ class Game{
     }
 }
 
-class Player{
-    constructor(id, name){
-        this.id = id;
-        this.name = name;
-    }
-    getId(){
-        return this.id;
-    }
-    getName(){
-        return this.name;
-    }
-    assignAsSpy(){
-        this.role = 'Spy';
-    }
-    assignAsResistanceMember(){
-        this.role = 'Resistance';
-    }
-    getRole(){
-        return this.role;
-    }
-}
+
 // const resist  = new Game();
 
 // var p1 = new Player(1,'Naymat');
