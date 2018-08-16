@@ -2,8 +2,9 @@
   "name": "resistance-app",
   "version": "1.0.0",
   "description": "Resistance game desktop application by Naymat Khan",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "test": "mocha || true"
   },
   "repository": {
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "electron": "^2.0.6",
     "mocha": "^5.2.0"
   }
 }

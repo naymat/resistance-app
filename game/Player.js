@@ -2,6 +2,7 @@ class Player{
     constructor(id, name){
         this.id = id;
         this.name = name;
+        this.voteHistory = [];
     }
     getId(){
         return this.id;
@@ -17,6 +18,9 @@ class Player{
     }
     getRole(){
         return this.role;
+    }
+    addVote(vote){
+        this.voteHistory.push(vote);
     }
 }
 module.exports = Player;

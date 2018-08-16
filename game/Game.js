@@ -3,8 +3,9 @@ const Player = require("../game/Player");
 class Game{
     constructor(){
         this.playerList = [];
-        this.roundNumber = 0;
+        this.roundNumber = 1;
         this.captain = null;
+        
     }
     /**
      * @param {Player} player - add single player to be registered to the game
@@ -137,10 +138,4 @@ class Game{
         return this.playerList.length - this.spyTeamSize();
     }
 }
-
-
-// const resist  = new Game();
-
-// var p1 = new Player(1,'Naymat');
-// console.log(p1.getName());
 module.exports = {Player, Game};
